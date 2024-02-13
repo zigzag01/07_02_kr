@@ -1,11 +1,11 @@
-﻿#include <iostream> // Подключение библиотеки для работы с вводом-выводом 
-#include <fstream> // Подключение библиотеки для работы с файлами 
-#include <cstring> // Подключение библиотеки для работы со строками 
-#include <string> // Подключение библиотеки для работы со строками 
-#include  <iomanip> // Подключение библиотеки для работы с форматированным выводом 
-#pragma warning(disable : 4996) // Отключение предупреждений компилятора 
-#define _CRT_SECURE_NO_WARNINGS // Отключение предупреждений компилятора 
-using namespace std; // Использование пространства имен std 
+﻿#include <iostream> 
+#include <fstream>  
+#include <cstring> 
+#include <string> 
+#include  <iomanip> 
+#pragma warning(disable : 4996) 
+#define _CRT_SECURE_NO_WARNINGS 
+using namespace std; 
 
 struct person // Определение структуры person 
 {
@@ -29,7 +29,7 @@ void SLTE(person worker[], int count, int PRC) // Функция для расч
 
 void qsort(person worker[], int first, int last) // Функция быстрой сортировки 
 {
-    int i = first, j = last; // Инициализация индексов 
+    int i = first, j = last; 
     int x = worker[(first + last) / 2].SUM; // Определение опорного элемента 
     while (i <= j) // Пока индексы не сойдутся 
     {
@@ -63,7 +63,7 @@ void bsearch(person worker[], int first, int last, char* a) // Функция п
     for (int i = first; i < last; i++) // Цикл по всем работникам 
         if (strcmp(worker[i].F, a) == 0) // Если фамилия совпадает с искомой 
         {
-            cout << setw(20) << worker[i].F << " " << worker[i].I << " " << worker[i].O << setw(20) << worker[i].SUM << setw(15) << worker[i].TSUM << setw(15) << worker[i].RSUM << setw(20) << worker[i].SUMD << endl; // Вывод информации о работнике 
+            cout << setw(20) << worker[i].F << " " << worker[i].I << " " << worker[i].O << setw(20) << worker[i].SUM << setw(15) << worker[i].TSUM << setw(15) << worker[i].RSUM << setw(20) << worker[i].SUMD << endl;
             k = 1; // Установка флага нахождения работника 
         }
     if (k == 0) // Если работник не найден 
@@ -83,27 +83,26 @@ void vvod(ifstream& in, person worker[], int count) // Функция ввода
     in.close(); // Закрытие файла 
 }
 
-int main() // Главная функция 
+int main() 
 {
-    setlocale(LC_ALL, "rus"); // Установка локали 
-    int count = 0, ALLSUM, PRC, OSUM = 0, OTSUM = 0, ORSUM = 0, OSUMD = 0, OSTATOK, PREMIYA = 0; // Объявление переменных 
-    person worker[20]; // Объявление массива структур 
-    ifstream in;
+    setlocale(LC_ALL, "rus"); 
+    int count = 0, ALLSUM, PRC, OSUM = 0, OTSUM = 0, ORSUM = 0, OSUMD = 0, OSTATOK, PREMIYA = 0;  
+    person worker[20]; 
 
-// Объявление потока ввода 
-ofstream out, fout; // Объявление потоков вывода 
+    ifstream in;
+ofstream out, fout; 
 in.open("Spisok.txt"); // Открытие файла для чтения 
 out.open("SSpisok.txt", ios::app); // Открытие файла для записи 
 
 // Проверка файла 
 if (!in.is_open()) // Если файл не открыт 
 {
-    cout << "Ошибка" << endl; // Вывод сообщения об ошибке 
-    return 0; // Завершение программы 
+    cout << "Ошибка" << endl; 
+    return 0; 
 }
 
 // Подсчёт количества сотрудников 
-char str[50]; // Объявление строки 
+char str[50]; 
 while (!in.eof()) // Пока не достигнут конец файла 
 {
     in.getline(str, 50, '\n'); // Чтение строки из файла 
